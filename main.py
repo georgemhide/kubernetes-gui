@@ -2,7 +2,7 @@
 
 from window.custom_window import sg
 from window.custom_window import CustomWindow
-from configureApp.configure import *
+from configure.configure import *
 from commands.commands import Commands
 
 
