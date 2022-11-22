@@ -23,3 +23,5 @@ Tested on Windows 11 and Windows subsystem for Linux.
 - Add nodes event support, not only for the POD
 - Create Tab-like Interface for showing always the PODS/NODES resources
   - Implemented, not tested due to currents simple Minikube's configuration
+- Add Support for running custom command on cluster
+- Add support for editing Kubernetes resources from within the app
