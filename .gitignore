@@ -1,0 +1,21 @@
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+
+### PYTHON ###
+*.spec
+__pycache__/
+
+### LOCAL ###
+.kube/
+
+### LOCAL ###
+.git/
