@@ -16,6 +16,12 @@ the [`PySimpleGui Interface`](https://www.pysimplegui.org/en/latest/).
 It runs on both Windows and Unix environments. 
 Tested on Windows 11 and Windows subsystem for Linux.
 
+
+## Local Testing
+The testing is made with minikube.
+Run `kubect proxy --port=8080 &` to enable a local machine to have access 
+to the kubernetes API
+
 ## TODOS
 
 - Handle Errors (ATM I assume the configuration is done properly)

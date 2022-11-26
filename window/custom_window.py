@@ -3,8 +3,8 @@ import PySimpleGUI as sg
 
 class CustomWindow:
 
-    def __int__(self):
-        pass
+    def __init__(self, consts):
+        self.consts = consts
 
     @staticmethod
     def update_window(window, key, values):
@@ -14,8 +14,7 @@ class CustomWindow:
     def update_output(window, key, value):
         window[key].update(value)
 
-    @staticmethod
-    def make_window(theme):
+    def make_window(self, theme):
         sg.theme(theme)
         # wrapper for all subparts
         layout = []
@@ -25,7 +24,7 @@ class CustomWindow:
             [
                 # Locate and set your .kube folder here
                 sg.Text("Find .kube =>"),
-                sg.In(size=(25, 1), enable_events=True, key="-KUBE FOLDER-"),
+                sg.In(size=(25, 1), enable_events=True, key=self.consts.kube_folder),
                 sg.FolderBrowse(enable_events=True),
                 sg.VSeparator(),
                 # Locate and set your config options
@@ -33,7 +32,7 @@ class CustomWindow:
                     size=(10, 1),
                     values=[''],
                     default_value='Namespace',
-                    key='-CONFIGURATIONS-',
+                    key=self.consts.namespaces,
                     tooltip='Select config file and set appropriate namespace'
                 ),
             ],
@@ -54,38 +53,38 @@ class CustomWindow:
                             'ServiceEntries',
                             'ReplicaSets'),
                     default_value='Applications',
-                    key='-RESOURCES MENU-',
+                    key=self.consts.resources_menu,
                     tooltip='Select application that you want to see for selected namespace'
                 ),
                 sg.VSeparator(),
                 sg.Button('Get',
                           enable_events=True,
-                          key='-GET-',
+                          key=self.consts.get,
                           metadata='get'),
                 sg.VSeparator(),
                 sg.OptionMenu(
                     values=[''],
                     size=(25, 1),
                     default_value='Resource Name',
-                    key='-INNER RESOURCES-',
+                    key=self.consts.inner_resources,
                     tooltip='Select something'
                 ),
                 sg.VSeparator(),
                 sg.Button('Logs',
                           enable_events=True,
-                          key='-LOGS-',
+                          key=self.consts.logs,
                           metadata='logs -f'),
                 sg.Button('Edit',
                           enable_events=True,
-                          key='-EDIT-',
+                          key=self.consts.edit,
                           metadata='edit'),
                 sg.Button('Describe',
                           enable_events=True,
-                          key='-DESCRIBE-',
+                          key=self.consts.describe,
                           metadata='describe'),
                 sg.Button('Delete',
                           enable_events=True,
-                          key='-DELETE-',
+                          key=self.consts.delete,
                           metadata='delete')
             ],
             [
@@ -105,7 +104,7 @@ class CustomWindow:
                           echo_stdout_stderr=True,
                           autoscroll=True,
                           auto_refresh=True,
-                          key='-OUTPUT-')]
+                          key=self.consts.output)]
         ]
 
         layout.append([

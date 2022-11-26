@@ -1,14 +1,24 @@
 import subprocess
+import requests
 
 
 class Commands:
 
     def __init__(self):
+        self.base_url = 'http://127.0.0.1:8080/api/v1'
         pass
 
     @staticmethod
     def prepare_command(what_to_do, where_to_do):
         return f'kubectl {what_to_do} {where_to_do}'
+
+    def run_api_command_get(self, uri):
+        response = requests.get(f'{self.base_url}{uri}')
+        return response
+
+    def delete_resource(self, uri):
+        response = requests.delete(f'{self.base_url}{uri}')
+        return response
 
     @staticmethod
     def run_command(what_to_do, where_to_do):
